@@ -215,6 +215,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#steps" class="md-nav__link">
     Steps
   </a>
@@ -333,6 +340,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#steps" class="md-nav__link">
     Steps
   </a>
@@ -417,6 +431,11 @@
                 
                 <h1 id="linux-from-scratch-with-training-wheels">Linux From Scratch with Training Wheels</h1>
 <p>or, "Linux from scratch using virtual machines on a Apple Mac M1 laptop"</p>
+<h2 id="_1"></h2>
+<p><em>Breaking News</em> March 31, 2022.  Newer versions of the linux kernel shipping with Ubuntu
+20 seem unhappy with the configuration shown in the article, resulting
+in boxes that don't boot.  This makes the host box inoperable.  I'll
+post an update soon with a fix.</p>
 <h2 id="steps">Steps</h2>
 <p>Working LFS hackers should probably read this article in reverse-section
 order, just getting to the meat of things, and then reading the introductory
@@ -515,7 +534,6 @@ bootable, you can create a final script to run your host VM:</p>
 <pre><code>qemu-system-aarch64 \
   -machine virt,accel=hvf,highmem=off \
   -cpu cortex-a72 -smp 8 -m 2G \
-  -device virtio-gpu-pci \
   -device virtio-keyboard-pci \
   -drive &quot;format=raw,file=edk2-aarch64-code.fd,if=pflash,readonly=on&quot; \
   -drive &quot;format=raw,file=ovmf_vars.fd,if=pflash&quot; \
@@ -529,7 +547,6 @@ bootable, you can create a final script to run your host VM:</p>
    1)</li>
 <li>Uses the ARM Cortex A72 instruction set for the CPU (again specific to an
    M@), with 8 hyper-threaded cores an 2 gigs of memory</li>
-<li>Includes a gpu device</li>
 <li>Includes a keyboard device</li>
 <li>Includes 2 flash drives to simulate UEFI booting</li>
 <li>Include a hard drive for the machine</li>
@@ -549,7 +566,6 @@ is needed.</p>
 <pre><code>qemu-system-aarch64 \
   -machine virt,accel=hvf,highmem=off \
   -cpu cortex-a72 -smp 8 -m 2G \
-  -device virtio-gpu-pci \
   -device virtio-keyboard-pci \
   -drive &quot;format=raw,file=edk2-aarch64-code.fd,if=pflash,readonly=on&quot; \
   -drive &quot;format=raw,file=ovmf_vars.fd,if=pflash&quot; \
