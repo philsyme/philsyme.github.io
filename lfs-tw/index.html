@@ -432,10 +432,11 @@
                 <h1 id="linux-from-scratch-with-training-wheels">Linux From Scratch with Training Wheels</h1>
 <p>or, "Linux from scratch using virtual machines on a Apple Mac M1 laptop"</p>
 <h2 id="_1"></h2>
-<p><em>Breaking News</em> March 31, 2022.  Newer versions of the linux kernel shipping with Ubuntu
-20 seem unhappy with the configuration shown in the article, resulting
-in boxes that don't boot.  This makes the host box inoperable.  I'll
-post an update soon with a fix.</p>
+<p><em>Update</em> March 31, 2022.  Qemu 6.2 shipps with support for native
+acceleration on Mac M1's but it seems that newer versions of the kernel
+shipping with Ubuntu don't work well with it.  However, the original gist
+mentioned in this article that uses an older Qemu along with Alexander
+Graf's patch set seems to work fine.</p>
 <h2 id="steps">Steps</h2>
 <p>Working LFS hackers should probably read this article in reverse-section
 order, just getting to the meat of things, and then reading the introductory
