@@ -548,12 +548,12 @@ bootable, you can create a final script to run your host VM:</p>
 </code></pre>
 <p>This script, line by line:</p>
 <ul>
-<li>Starts the ARM64 CPU emulator (this will be different for you if not on a MAC
-   1)</li>
-<li>Uses the ARM Cortex A72 instruction set for the CPU (again specific to an
-   M@), with 8 hyper-threaded cores an 2 gigs of memory</li>
+<li>Starts the ARM64 CPU emulator </li>
+<li>Uses the ARM Cortex A72 instruction set for the CPU,
+   with 8 hyper-threaded cores an 2 gigs of memory</li>
 <li>Includes a keyboard device</li>
-<li>Includes 2 flash drives to simulate UEFI booting</li>
+<li>Includes 2 flash drives to simulate UEFI booting.  The first is the
+   UEFI boot code, the second is a writable drive for that code.</li>
 <li>Include a hard drive for the machine</li>
 <li>Allows localhost 9922 to be used to ssh into the device</li>
 <li>Turns of the display, so everything is displayed in the terminal</li>
