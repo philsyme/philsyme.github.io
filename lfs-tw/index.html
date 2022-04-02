@@ -432,10 +432,10 @@
                 <h1 id="linux-from-scratch-with-training-wheels">Linux From Scratch with Training Wheels</h1>
 <p>or, "Linux from scratch using virtual machines on a Apple Mac M1 laptop"</p>
 <h2 id="_1"></h2>
-<p><em>Update</em> March 31, 2022.  Qemu 6.2 shipps with support for native
-acceleration on Mac M1's but it seems that newer versions of the kernel
+<p><em>Update</em> March 31, 2022.  Qemu 6.2 ships with support for native
+acceleration on Mac M1s but it seems that newer versions of the kernel
 shipping with Ubuntu don't work well with it.  However, the original gist
-mentioned in this article that uses an older Qemu along with Alexander
+mentioned in this article that uses an older qemu along with Alexander
 Graf's patch set seems to work fine.</p>
 <h2 id="steps">Steps</h2>
 <p>Working LFS hackers should probably read this article in reverse-section
@@ -527,8 +527,12 @@ one way, is to take the following steps:</p>
 steps here.</p>
 <h2 id="supplemental-step-1-before-you-start-the-lfs-book">Supplemental Step 1: Before you start the LFS book:</h2>
 <p>Create a guest VM using qemu that serves as the "host".  </p>
-<p>On a Mac M1, as of this writing (October 2021), this <a href="https://gist.github.com/nrjdalal/e70249bb5d2e9d844cc203fd11f74c55">github gist</a>
- is the best guide. </p>
+<p>On a Mac M1, currently (March 2022), this 
+<a href="https://gist.github.com/nrjdalal/e70249bb5d2e9d844cc203fd11f74c55">github gist</a>
+ is the best guide.  (The guide uses a slightly older version of qemu
+along with a patchset by Alexander Graf.  This seems to work better than
+using an unpatched version of the latest Qemu.  For me, building qemu
+from source along with the patchset as described works well.)</p>
 <p>At the end of the process, hopefully after your brand-new Ubuntu image is
 bootable, you can create a final script to run your host VM:</p>
 <p><em>start_host.sh</em>: (before second drive)</p>
@@ -605,7 +609,7 @@ comfortable.</p>
 <p>Take this step while on <a href="https://www.linuxfromscratch.org/lfs/view/stable/chapter10/kernel.html">Chapter 10.3 Linux-5.13.12</a>, where you create a kernel
 for your new machine.</p>
 <p>You can iteratively make lots of custom kernels after finding success once.
-I would advise doing the minimum amout of customization at first.  Your
+I would advise doing the minimum amount of customization at first.  Your
 instinct will be to make the leanest, meanest kernel possible but hold off on
 that for future iterations.</p>
 <p>Just go with the defaults from "make menuconfig", and also add these drivers
@@ -654,7 +658,6 @@ point. Mine looks like this:</p>
 <pre><code>qemu-system-aarch64 \
   -machine virt,accel=hvf,highmem=off \
   -cpu cortex-a72 -smp 8 -m 2G \
-  -device virtio-gpu-pci \
   -device virtio-keyboard-pci \
   -drive &quot;format=raw,file=edk2-aarch64-code.fd,if=pflash,readonly=on&quot; \
   -drive &quot;format=raw,file=ovmf_vars.fd.lfs,if=pflash&quot; \
